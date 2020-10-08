@@ -22,17 +22,18 @@ public class RomanNumerals {
         for (int i = 0; i < digits.size(); i++) {
             RomanDigit currentDigit = digits.get(i);
             remainingNumber = addLettersWithValueIfRequired(remainingNumber, currentDigit, sb);
-            for (int j = i; j < digits.size(); j++) {
+            for (int j = i+1; j < digits.size(); j++) {
                 RomanDigit digitToSubtract = digits.get(j);
                 remainingNumber = addSubtractingFormulaIfRequired(remainingNumber, currentDigit, digitToSubtract, sb);
             }
+            if (remainingNumber==0) break;
         }
         return sb.toString();
     }
 
     private int addLettersWithValueIfRequired(int number, RomanDigit digit, StringBuilder sb) {
         int necessaryLetterCount = number / digit.getValue();
-        if (necessaryLetterCount > 0) {
+        if (necessaryLetterCount > 0 && necessaryLetterCount<4) {
             for (int i = 0; i < necessaryLetterCount; i++) {
                 sb.append(digit.getLetter());
                 number -= digit.getValue();
@@ -43,7 +44,7 @@ public class RomanNumerals {
 
     private int addSubtractingFormulaIfRequired(int remainingNumber, RomanDigit currentDigit, RomanDigit digitToSubtract, StringBuilder sb) {
         int subtractingFormulaValue = currentDigit.getValue() - digitToSubtract.getValue();
-        if (remainingNumber >= subtractingFormulaValue) {
+        if (remainingNumber >= subtractingFormulaValue && remainingNumber>3*digitToSubtract.getValue()) {
             String subtractingFormulaStr = digitToSubtract.getLetter() + currentDigit.getLetter();
             sb.append(subtractingFormulaStr);
             return remainingNumber - subtractingFormulaValue;
