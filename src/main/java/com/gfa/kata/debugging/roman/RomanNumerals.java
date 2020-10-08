@@ -33,7 +33,7 @@ public class RomanNumerals {
 
     private int addLettersWithValueIfRequired(int number, RomanDigit digit, StringBuilder sb) {
         int necessaryLetterCount = number / digit.getValue();
-        if (necessaryLetterCount > 0 && necessaryLetterCount<4) {
+        if (necessaryLetterCount > 0 && (necessaryLetterCount<4 ||digit.getValue()==1000)) {
             for (int i = 0; i < necessaryLetterCount; i++) {
                 sb.append(digit.getLetter());
                 number -= digit.getValue();
