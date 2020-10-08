@@ -42,8 +42,8 @@ public class RomanNumerals {
     private int addSubtractingFormulaIfRequired(int remainingNumber, RomanDigit currentDigit, RomanDigit digitToSubtract, StringBuilder sb) {
         int subtractingFormulaValue = currentDigit.getValue() - digitToSubtract.getValue();
         if (remainingNumber >= subtractingFormulaValue) {
-            String minusOneNotationStr = digitToSubtract.getLetter() + currentDigit.getLetter();
-            sb.append(minusOneNotationStr);
+            String subtractingFormulaStr = digitToSubtract.getLetter() + currentDigit.getLetter();
+            sb.append(subtractingFormulaStr);
             return remainingNumber - subtractingFormulaValue;
         }
         return remainingNumber;
