@@ -1,3 +1,5 @@
+package com.gfa.kata.debugging.roman;
+
 public class RomanDigit {
     private String letter;
     private Integer value;

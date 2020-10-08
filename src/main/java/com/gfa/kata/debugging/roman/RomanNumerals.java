@@ -1,3 +1,5 @@
+package com.gfa.kata.debugging.roman;
+
 import java.util.*;
 
 public class RomanNumerals {
